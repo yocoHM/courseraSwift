@@ -28,21 +28,19 @@ class Auto {
     
     var velocidadEnCadena = ""
     
-    switch (self.velocidad.rawValue) {
-    case 0:
+    switch (self.velocidad) {
+    case Velocidades.apagado:
       self.velocidad = Velocidades.velocidadBaja
       velocidadEnCadena = "Velocidad baja"
-    case 20:
+    case Velocidades.velocidadBaja:
       self.velocidad = Velocidades.velocidadMedia
       velocidadEnCadena = "Velocidad media"
-    case 50:
+    case Velocidades.velocidadMedia:
       self.velocidad = Velocidades.velocidadAlta
       velocidadEnCadena = "Velocidad alta"
-    case 120:
+    case Velocidades.velocidadAlta:
       self.velocidad = Velocidades.velocidadMedia
       velocidadEnCadena = "Velocidad media"
-    default:
-      print("Velocidad no válida")
     }
     
     return (self.velocidad.rawValue,velocidadEnCadena)
@@ -55,13 +53,10 @@ class Auto {
 //******************* Prueba de la clase Auto *******************
 var auto = Auto()
 
+print("0", "Apagado")
+
 //Iteración
 for index in 1...20 {
-  
-  if (auto.velocidad.rawValue == 0) {
-    print("0, Apagado")
-  }
-  
   var resultados = auto.cambioDeVelocidad()
   print("\(resultados.actual), \(resultados.velocidadEnCadena)")
 }
